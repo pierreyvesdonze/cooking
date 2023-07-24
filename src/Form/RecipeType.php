@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Recipe;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class RecipeType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('title', TextType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'Donnez un titre à votre recette'
+                ]
+            ])
+            ->add('description', TextareaType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'Décrivez votre recette en quelques mots'
+                ]
+            ])
+            ->add('portions', TextType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'Combien de portions ?'
+                ]
+            ])
+            ->add('timePrepa', TextType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'Temps de préparation'
+                ]
+            ])
+            ->add('timeCooking', TextType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'Temps de cuisson'
+                ]
+            ])
+            ->add('recipeIngredient', CollectionType::class, [
+                'label'         => false,
+                'mapped'        => false,
+                'entry_type'    => RecipeIngredientType::class,
+                'entry_options' => [
+                    'label' => false
+                ],
+                'allow_add'    => true,
+                'allow_delete' => true
+            ])
+            ->add('recipeStep', CollectionType::class, [
+                'label'         => false,
+                'mapped'        => false,
+                'entry_type'    => RecipeStepType::class,
+                'entry_options' => [
+                    'label' => false
+                ],
+                'allow_add'    => true,
+                'allow_delete' => true
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => "Valider",
+                'attr'  => [
+                    'class' => "custom-btn validate-btn"
+                ]
+            ]);
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Recipe::class,
+        ]);
+    }
+}

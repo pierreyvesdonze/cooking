@@ -32,10 +32,11 @@ class RecipeController extends AbstractController
         ): Response
     {
         if(!$this->getUser()) {
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('app_login');
         }
-        
+
         $recipe = new Recipe();
+        $recipe->setUser($this->getUser());
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
 
@@ -78,7 +79,7 @@ class RecipeController extends AbstractController
     public function edit(Request $request, Recipe $recipe): Response
     {
         if(!$this->getUser()) {
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
@@ -97,7 +98,7 @@ class RecipeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_recipe_delete', methods: ['POST'])]
+    #[Route('/supprimer/{id}', name: 'app_recipe_delete', methods: ['POST'])]
     public function delete(Request $request, Recipe $recipe, RecipeRepository $recipeRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$recipe->getId(), $request->request->get('_token'))) {

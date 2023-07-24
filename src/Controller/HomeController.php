@@ -15,14 +15,4 @@ class HomeController extends AbstractController
            
         ]);
     }
-
-    #[Route('/test', name: 'test')]
-    public function test()
-    {
-        $numbers = [0,5,19];
-
-        dd(max($numbers));
-
-        return $numbers;
-    }
 }

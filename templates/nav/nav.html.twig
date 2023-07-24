@@ -1,14 +1,24 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    {% if app.user and is_granted('ROLE_ADMIN') %}
+    <li><a href="{{ path('app_recipe_new') }}">Ajouter une recette</a></li>
+    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+    {% else %}
+    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+    {# <li><a href="{{ path('app_register') }}">Créer un compte</a></li> #}
+    {% endif %}
+</ul>
+
 <nav>
     <div class="nav-wrapper">
         <a href="{{ path('home') }}" class="brand-logo">C O O K I N G</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{{ path('app_recipe_index') }}" class="recipe-navlink">Recettes</a></li>
-            {% if app.user and is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('app_recipe_new') }}"><i class="material-icons">add</i></a></li>
-            {% else %}
-            <li><a href="{{ path('app_login') }}"><i class="material-icons">lock</i></a></li>
-            {% endif %}
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i
+                        class="material-icons right">person</i></a></li>
+          
         </ul>
     </div>
 </nav>
@@ -17,6 +27,7 @@
     <li><a href="{{ path('app_recipe_index') }}" class="recipe-navlink">Recettes</a></li>
     {% if app.user and is_granted('ROLE_ADMIN') %}
     <li><a href="{{ path('app_recipe_new') }}">Ajouter une recette</a></li>
+    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
     {% else %}
     <li><a href="{{ path('app_login') }}"><i class="material-icons">lock</i></a></li>
     {% endif %}

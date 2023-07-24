@@ -3,12 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Recipe;
+use App\Entity\RecipeCategory;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -91,10 +93,14 @@ class RecipeType extends AbstractType
                     ])
                 ],
             ])
+            ->add('category', EntityType::class, [
+                'class' => RecipeCategory::class,
+                'choice_label' => 'title'
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => "Valider",
                 'attr'  => [
-                    'class' => "custom-btn validate-btn"
+                    'class' => "btn validate-btn"
                 ]
             ]);
         ;

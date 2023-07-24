@@ -44,6 +44,10 @@ class Recipe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'recipes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?RecipeCategory $category = null;
+
     public function __construct()
     {
         $this->recipeIngredients = new ArrayCollection();
@@ -195,6 +199,18 @@ class Recipe
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCategory(): ?RecipeCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?RecipeCategory $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

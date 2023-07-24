@@ -44,6 +44,10 @@ h3 {
   font-size: 2em;
 }
 
+select {
+  display: block !important;
+}
+
 .btn {
   background-color: var(--btn-color);
   font-weight: bold;

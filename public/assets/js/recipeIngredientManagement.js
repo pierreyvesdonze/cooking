@@ -39,7 +39,7 @@ document
 
 const addIngredientDeleteLink = (ingredientItem) => {
     const removeFormButton = document.createElement('button');
-    removeFormButton.classList.add('custom-btn', 'delete-btn');
+    removeFormButton.classList.add('btn', 'btn-danger');
     removeFormButton.innerText = 'Supprimer cet ingrédient';
 
     ingredientItem.append(removeFormButton);

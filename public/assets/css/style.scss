@@ -59,6 +59,7 @@ RECIPE
 */
 /*TABS*/
 .categories-tabs {
+    margin-bottom: 0 !important;
     @include sm {
         display: none;
     }

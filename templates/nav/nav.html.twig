@@ -16,7 +16,7 @@
 <ul class="sidenav" id="mobile-demo">
     <li><a href="{{ path('app_recipe_index') }}" class="recipe-navlink">Recettes</a></li>
     {% if app.user %}
-    <li><a href="{{ path('app_recipe_new') }}"><i class="material-icons">add</i></a></li>
+    <li><a href="{{ path('app_recipe_new') }}">Ajouter une recette</a></li>
     {% else %}
     <li><a href="{{ path('app_login') }}"><i class="material-icons">lock</i></a></li>
     {% endif %}

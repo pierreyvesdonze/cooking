@@ -10,11 +10,11 @@
 }
 
 body {
-    height: 100vh;
-    background: var(--body-bg);
-    font-family: "Montserrat", sans-serif;
-    font-weight: 200;
-    color: var(--primary-color);
+  height: 100vh;
+  background: var(--body-bg);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  color: var(--primary-color);
 }
 
 body,
@@ -34,12 +34,20 @@ a {
   color: var(--blue-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: lighter;
+  user-select: none;
 }
+
 h1 {
   font-size: 3em;
 }
+
 h3 {
   font-size: 2em;
 }
@@ -48,9 +56,21 @@ select {
   display: block !important;
 }
 
+textarea {
+  margin-top: 20px;
+}
+
+.hr-custom {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
 .btn {
   background-color: var(--btn-color);
   font-weight: bold;
+
   &:hover {
     background-color: var(--btn-color-hover);
   }
@@ -58,7 +78,12 @@ select {
 
 .btn-danger {
   background-color: var(--btn-danger-color);
+
   &:hover {
     background-color: var(--btn-danger-color-hover);
   }
+}
+
+.validate-btn {
+  margin-top: 20px;
 }

@@ -58,7 +58,30 @@ RECIPE
 *******************************
 */
 /*TABS*/
-.recipe-tabs {
+.categories-tabs {
+    @include sm {
+        display: none;
+    }
+    @include xs {
+        display: none;
+    }
+}
+
+.categories-tabs-mobile {
+    @include md {
+        display: none;
+    }
+    @include lg {
+        display: none;
+    }
+    @include xl {
+        display: none;
+    }
+}
+
+
+.recipe-tabs,
+.recipe-tabs-mobile {
     display: flex;
     justify-content: space-between;
 
@@ -77,10 +100,15 @@ RECIPE
     }
 }
 
+.recipe-tabs-mobile {
+    flex-direction: column;
+}
+
 .category-tab {
     display: block;
     width: 100%;
     height: 100%;
+    color: var(--primary-color);
 }
 
 .recipe-tabs .tab a {

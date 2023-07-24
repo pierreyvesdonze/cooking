@@ -22,13 +22,11 @@ var app = {
     recipeTabFilter: (e) => {
         
         /* for css only */
-        $('.tab').removeClass('tabActive');
+        $('.tab-container').removeClass('tabActive');
         e.currentTarget.parentNode.classList.add('tabActive');
 
         const category = e.currentTarget.dataset.category;
         const cardContainer = $('.card-container');
-
-        console.log(category)
 
         cardContainer.hide();
 

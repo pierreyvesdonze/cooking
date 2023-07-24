@@ -1,11 +1,25 @@
+{# DESKTOP #}
 <div class="row categories-tabs">
     <div class="col s12">
         <div class="recipe-tabs">
-            {% for category in categories %}           
-            <div class="tab col s3">
-                <a href="#" target="_self" class="category-tab" data-category="{{ category.title }}">{{ category.title }}</a>
+            {% for category in categories %}
+            <div class="tab tab-container col s3">
+                <a href="#" target="_self" class="category-tab" data-category="{{ category.title }}">{{ category.title
+                    }}</a>
             </div>
             {% endfor %}
         </div>
+    </div>
+</div>
+
+{# MOBILE #}
+<div class="categories-tabs-mobile">
+    <div class="recipe-tabs-mobile">
+        {% for category in categories %}
+        <div class="tab tab-container tab-container-mobile col s3">
+            <a href="#" target="_self" class="category-tab" data-category="{{ category.title }}">{{ category.title
+                }}</a>
+        </div>
+        {% endfor %}
     </div>
 </div>

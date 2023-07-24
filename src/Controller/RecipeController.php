@@ -111,6 +111,16 @@ class RecipeController extends AbstractController
                 $recipe->setImage($imageFileName);
             }
 
+            foreach ($form->get('recipeStep')->getdata() as $recipeStep) {
+                $recipe->addRecipeStep($recipeStep);
+                $this->em->persist($recipeStep);
+            }
+
+            foreach ($form->get('recipeIngredient')->getdata() as $recipeIngredient) {
+                $recipe->addRecipeIngredient($recipeIngredient);
+                $this->em->persist($recipeIngredient);
+            }
+
             $this->em->flush();
 
             return $this->redirectToRoute('app_recipe_show', [

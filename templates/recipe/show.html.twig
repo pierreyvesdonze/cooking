@@ -52,11 +52,10 @@
                 {% endfor %}
             </ol>
         </div>
-
     </div>
 </div>
 
-{% if app.user %}
+{% if app.user and is_granted('ROLE_ADMIN') %}
 <div class="control-recipe">
     <a href="{{ path('app_recipe_edit', {'id':recipe.id}) }}" class="btn">MODIFIER</a>
 

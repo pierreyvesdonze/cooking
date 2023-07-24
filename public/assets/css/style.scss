@@ -4,6 +4,35 @@
 
 /*
 *******************************
-MAIN 
+RECIPE
 *******************************
 */
+
+/* CARD */
+.card {
+    box-shadow: none;
+
+    &:hover {
+        .card-content {
+            background-color: var(--grey-color);
+        }
+    }
+}
+
+.card-link {
+    color: var(--primary-color);
+}
+
+.card-image img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    background-color: var(--blue-color);
+    transition: ease-in-out 0.22s;
+}
+
+.card-title {
+    font-size: 1.3em !important;
+}

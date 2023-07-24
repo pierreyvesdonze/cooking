@@ -32,12 +32,15 @@ var app = {
 
         cardContainer.hide();
 
-        cardContainer.each(function() {
-            if ($(this).data('category') == category) {
-                console.log($(cardContainer).data('category'))
-                $(this).show();
-            }
-        })
+        // Filtering cards by category
+        const filteredCards = cardContainer.filter(function() {
+            return $(this).data('category') === category;
+        });
+    
+        // Little animation, cards are showing one by one
+        filteredCards.each(function(index) {
+            $(this).delay(80 * index).show(0);
+        });
 
     }
 }

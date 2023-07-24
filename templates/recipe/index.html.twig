@@ -1,43 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Recipe index{% endblock %}
+{% block title %}Recettes index{% endblock %}
 
 {% block body %}
-    <h1>Recipe index</h1>
+<h1>Recettes</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Portions</th>
-                <th>TimePrepa</th>
-                <th>TimeCooking</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for recipe in recipes %}
-            <tr>
-                <td>{{ recipe.id }}</td>
-                <td>{{ recipe.title }}</td>
-                <td>{{ recipe.description }}</td>
-                <td>{{ recipe.portions }}</td>
-                <td>{{ recipe.timePrepa }}</td>
-                <td>{{ recipe.timeCooking }}</td>
-                <td>
-                    <a href="{{ path('app_recipe_show', {'id': recipe.id}) }}">show</a>
-                    <a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_recipe_new') }}">Create new</a>
+<div class="row">
+    {% for recipe in recipes %}
+    <div class="col s6 m3">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ asset(recipe.image) }}">
+                <span class="card-title">{{ recipe.title }}</span>
+            </div>
+            <div class="card-content">
+                <p> {{ recipe.description }} </p>
+            </div>
+            <div class="card-action">
+                <a href="{{ path('app_recipe_show', {'id':recipe.id}) }}">Voir la recette</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <tr>
+        <td colspan="7">Aucune recette trouvée</td>
+    </tr>
+    {% endfor %}
+</div>
 {% endblock %}
+

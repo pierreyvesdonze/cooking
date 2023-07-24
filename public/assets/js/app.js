@@ -1,12 +1,15 @@
 var app = {
-    
+
     init: () => {
 
         /**
         * *****************************
-        * L I S T E N E R S
+        * Materialize components init
         * *****************************
         */
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
     },
 }
 

@@ -18,6 +18,12 @@ html {
   margin: 0;
 }
 
+.main-container {
+  overflow-y: auto;
+  height: 85vh;
+  margin: 0 30px;
+}
+
 a {
   text-decoration: none;
   color: var(--blue-color);
@@ -29,16 +35,4 @@ a {
 .flex-left,
 .flex-right {
   width: 50%;
-}
-
-.hr-white {
-	height: 1px;
-	border: 0;
-	width: 90%;
-	margin: 40px auto;
-	background: rgb(226, 226, 226);
-	background: radial-gradient(circle,
-			rgb(240, 240, 240) 0%,
-			rgba(255, 255, 255, 0.144) 50%,
-			rgba(255, 254, 254, 0) 100%);
 }

@@ -31,9 +31,8 @@ class RecipeController extends AbstractController
     public function new(
         Request $request,
         ImageManager $imageManager
-        ): Response
-    {
-        if(!$this->getUser()) {
+    ): Response {
+        if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
 
@@ -89,9 +88,8 @@ class RecipeController extends AbstractController
         Request $request,
         Recipe $recipe,
         ImageManager $imageManager
-        ): Response
-    {
-        if(!$this->getUser()) {
+    ): Response {
+        if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(RecipeType::class, $recipe);
@@ -100,12 +98,12 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $image = $form->get('image')->getData();
 
-            if (!null == $recipe->GetImage()) {
-                $imageManager->deleteImage($recipe->getImage());
+            if ($image) {
                 $imageFileName = $imageManager->upload($image);
                 $imageManager->resize($imageFileName);
                 $recipe->setImage($imageFileName);
             }
+
             $this->em->flush();
 
             return $this->redirectToRoute('app_recipe_show', [
@@ -125,9 +123,8 @@ class RecipeController extends AbstractController
         Recipe $recipe,
         RecipeRepository $recipeRepository,
         ImageManager $imageManager
-        ): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$recipe->getId(), $request->request->get('_token'))) {
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $recipe->getId(), $request->request->get('_token'))) {
             $imageManager->deleteImage($recipe->getImage());
             $recipeRepository->remove($recipe, true);
         }

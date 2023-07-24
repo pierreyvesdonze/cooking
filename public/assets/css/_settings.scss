@@ -1,8 +1,12 @@
 :root {
   --body-bg: white;
   --primary-color: rgb(0, 0, 0);
-  --blue-color: #e9f2f7;
-  --grey-color: #9a9ea0;
+  --blue-color: #f7f7f7;
+  --grey-color: #b9c2c7;
+  --btn-color: #97cae6;
+  --btn-color-hover: #6a8da0;
+  --btn-danger-color: #e69797;
+  --btn-danger-color-hover: #aa6c6c;
 }
 
 body {
@@ -30,10 +34,27 @@ a {
   color: var(--blue-color);
 }
 
-.flex-left-right {
-  display: flex;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: lighter;
 }
-.flex-left,
-.flex-right {
-  width: 50%;
+h1 {
+  font-size: 3em;
+}
+h3 {
+  font-size: 2em;
+}
+
+.btn {
+  background-color: var(--btn-color);
+  font-weight: bold;
+  &:hover {
+    background-color: var(--btn-color-hover);
+  }
+}
+
+.btn-danger {
+  background-color: var(--btn-danger-color);
+  &:hover {
+    background-color: var(--btn-danger-color-hover);
+  }
 }

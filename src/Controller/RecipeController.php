@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Recipe;
 use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
+use App\Service\ImageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,7 @@ class RecipeController extends AbstractController
     #[Route('/ajouter', name: 'app_recipe_new', methods: ['GET', 'POST'])]
     public function new(
         Request $request,
+        ImageManager $imageManager
         ): Response
     {
         if(!$this->getUser()) {
@@ -42,6 +44,13 @@ class RecipeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setTitle($form->get('title')->getData());
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $imageFileName = $imageManager->upload($image);
+                $imageManager->resize($imageFileName);
+                $recipe->setImage($imageFileName);
+            }
 
             foreach ($form->get('recipeStep')->getdata() as $recipeStep) {
                 $recipe->addRecipeStep($recipeStep);
@@ -76,7 +85,11 @@ class RecipeController extends AbstractController
     }
 
     #[Route('/{id}/editer', name: 'app_recipe_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Recipe $recipe): Response
+    public function edit(
+        Request $request,
+        Recipe $recipe,
+        ImageManager $imageManager
+        ): Response
     {
         if(!$this->getUser()) {
             return $this->redirectToRoute('app_login');
@@ -85,6 +98,14 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            if (!null == $recipe->GetImage()) {
+                $imageManager->deleteImage($recipe->getImage());
+                $imageFileName = $imageManager->upload($image);
+                $imageManager->resize($imageFileName);
+                $recipe->setImage($imageFileName);
+            }
             $this->em->flush();
 
             return $this->redirectToRoute('app_recipe_show', [
@@ -99,9 +120,15 @@ class RecipeController extends AbstractController
     }
 
     #[Route('/supprimer/{id}', name: 'app_recipe_delete', methods: ['POST'])]
-    public function delete(Request $request, Recipe $recipe, RecipeRepository $recipeRepository): Response
+    public function delete(
+        Request $request,
+        Recipe $recipe,
+        RecipeRepository $recipeRepository,
+        ImageManager $imageManager
+        ): Response
     {
         if ($this->isCsrfTokenValid('delete'.$recipe->getId(), $request->request->get('_token'))) {
+            $imageManager->deleteImage($recipe->getImage());
             $recipeRepository->remove($recipe, true);
         }
 

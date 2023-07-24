@@ -138,6 +138,43 @@ HOME
 RECIPE
 *******************************
 */
+/*TABS*/
+.recipe-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+.recipe-tabs .tab {
+  text-align: center;
+  padding: 10px;
+  font-weight: 300;
+  font-size: 1.7em;
+}
+.recipe-tabs .tab:hover {
+  background-color: var(--blue-color);
+}
+.recipe-tabs .tabActive {
+  background-color: var(--blue-color);
+}
+
+.category-tab {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.recipe-tabs .tab a {
+  color: var(--primary-color) !important;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background-color: var(--blue-color);
+}
+
+.tabs .indicator {
+  background-color: #b2cef6;
+}
+
 /* CARD */
 .card {
   box-shadow: none;

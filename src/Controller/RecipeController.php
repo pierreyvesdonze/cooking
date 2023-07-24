@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Form\RecipeType;
+use App\Repository\RecipeCategoryRepository;
 use App\Repository\RecipeRepository;
 use App\Service\ImageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,11 +20,17 @@ class RecipeController extends AbstractController
     {
     }
 
-    #[Route('/', name: 'app_recipe_index', methods: ['GET'])]
-    public function index(RecipeRepository $recipeRepository): Response
+    #[Route('s/', name: 'app_recipe_index', methods: ['GET'])]
+    public function index(
+        RecipeRepository $recipeRepository,
+        RecipeCategoryRepository $recipeCategoryRepository
+        ): Response
     {
+        $categories = $recipeCategoryRepository->findAll();
+
         return $this->render('recipe/index.html.twig', [
-            'recipes' => $recipeRepository->findAll(),
+            'recipies' => $recipeRepository->findAll(),
+            'categories' => $categories
         ]);
     }
 

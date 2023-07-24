@@ -94,6 +94,7 @@ class RecipeType extends AbstractType
                 ],
             ])
             ->add('category', EntityType::class, [
+                'label' => 'Catégorie',
                 'class' => RecipeCategory::class,
                 'choice_label' => 'title'
             ])

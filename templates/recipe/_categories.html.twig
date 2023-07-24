@@ -1,0 +1,11 @@
+<div class="row categories-tabs">
+    <div class="col s12">
+        <div class="recipe-tabs">
+            {% for category in categories %}           
+            <div class="tab col s3">
+                <a href="#" target="_self" class="category-tab" data-category="{{ category.title }}">{{ category.title }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

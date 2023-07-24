@@ -12,9 +12,11 @@ HOME
     height: 80vh;
     display: flex;
     align-items: center;
+
     @include sm {
         display: block;
     }
+
     @include xs {
         display: block;
     }
@@ -23,9 +25,11 @@ HOME
 .home-left,
 .home-right {
     width: 50%;
+
     @include sm {
         width: 100%;
     }
+
     @include xs {
         width: 100%;
     }
@@ -42,6 +46,7 @@ HOME
     align-items: center;
     flex-wrap: wrap;
     align-content: center;
+
     h1 {
         text-align: center;
     }
@@ -52,6 +57,44 @@ HOME
 RECIPE
 *******************************
 */
+/*TABS*/
+.recipe-tabs {
+    display: flex;
+    justify-content: space-between;
+
+    .tab {
+        text-align: center;
+        padding: 10px;
+        font-weight: 300;
+        font-size: 1.7em;
+        &:hover{
+            background-color: var(--blue-color);
+        }
+    }
+
+    .tabActive {
+        background-color: var(--blue-color);
+    }
+}
+
+.category-tab {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.recipe-tabs .tab a {
+    color: var(--primary-color) !important;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+    background-color: var(--blue-color);
+}
+
+.tabs .indicator {
+    background-color: #b2cef6;
+}
 
 /* CARD */
 .card {

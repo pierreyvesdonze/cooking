@@ -45,7 +45,8 @@ HOME
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: center;  
+    flex-direction: column;
 
     h1 {
         text-align: center;

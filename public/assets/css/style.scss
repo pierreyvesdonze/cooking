@@ -4,6 +4,51 @@
 
 /*
 *******************************
+HOME
+*******************************
+*/
+.home-container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    @include sm {
+        display: block;
+    }
+    @include xs {
+        display: block;
+    }
+}
+
+.home-left,
+.home-right {
+    width: 50%;
+    @include sm {
+        width: 100%;
+    }
+    @include xs {
+        width: 100%;
+    }
+}
+
+.home-left img {
+    background-size: cover;
+    width: 100%;
+}
+
+.home-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    h1 {
+        text-align: center;
+    }
+}
+
+/*
+*******************************
 RECIPE
 *******************************
 */

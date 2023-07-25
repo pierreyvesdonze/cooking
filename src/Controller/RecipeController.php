@@ -24,8 +24,7 @@ class RecipeController extends AbstractController
     public function index(
         RecipeRepository $recipeRepository,
         RecipeCategoryRepository $recipeCategoryRepository
-        ): Response
-    {
+    ): Response {
         $categories = $recipeCategoryRepository->findAll();
 
         return $this->render('recipe/index.html.twig', [
@@ -56,14 +55,16 @@ class RecipeController extends AbstractController
                 $imageFileName = $imageManager->upload($image);
                 $imageManager->resize($imageFileName);
                 $recipe->setImage($imageFileName);
+            } else {
+                $recipe->setImage('assets/images/plat.jpg');
             }
 
-            foreach ($form->get('recipeStep')->getdata() as $recipeStep) {
+            foreach ($form->get('recipeSteps')->getdata() as $recipeStep) {
                 $recipe->addRecipeStep($recipeStep);
                 $this->em->persist($recipeStep);
             }
 
-            foreach ($form->get('recipeIngredient')->getdata() as $recipeIngredient) {
+            foreach ($form->get('recipeIngredients')->getdata() as $recipeIngredient) {
                 $recipe->addRecipeIngredient($recipeIngredient);
                 $this->em->persist($recipeIngredient);
             }
@@ -96,10 +97,16 @@ class RecipeController extends AbstractController
         Recipe $recipe,
         ImageManager $imageManager
     ): Response {
+
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
-        $form = $this->createForm(RecipeType::class, $recipe);
+
+        $form = $this->createForm(
+            RecipeType::class,
+            $recipe
+        );
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -111,12 +118,12 @@ class RecipeController extends AbstractController
                 $recipe->setImage($imageFileName);
             }
 
-            foreach ($form->get('recipeStep')->getdata() as $recipeStep) {
+            foreach ($form->get('recipeSteps')->getdata() as $recipeStep) {
                 $recipe->addRecipeStep($recipeStep);
                 $this->em->persist($recipeStep);
             }
 
-            foreach ($form->get('recipeIngredient')->getdata() as $recipeIngredient) {
+            foreach ($form->get('recipeIngredients')->getdata() as $recipeIngredient) {
                 $recipe->addRecipeIngredient($recipeIngredient);
                 $this->em->persist($recipeIngredient);
             }

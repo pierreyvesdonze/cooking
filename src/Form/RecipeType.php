@@ -55,7 +55,7 @@ class RecipeType extends AbstractType
                     'placeholder' => 'Temps de cuisson'
                 ]
             ])
-            ->add('recipeIngredient', CollectionType::class, [
+            ->add('recipeIngredients', CollectionType::class, [
                 'label'         => false,
                 'mapped'        => false,
                 'entry_type'    => RecipeIngredientType::class,
@@ -63,9 +63,10 @@ class RecipeType extends AbstractType
                     'label' => false
                 ],
                 'allow_add'    => true,
-                'allow_delete' => true
+                'allow_delete' => true,
+                'by_reference' => false,
             ])
-            ->add('recipeStep', CollectionType::class, [
+            ->add('recipeSteps', CollectionType::class, [
                 'label'         => false,
                 'mapped'        => false,
                 'entry_type'    => RecipeStepType::class,
@@ -73,7 +74,9 @@ class RecipeType extends AbstractType
                     'label' => false
                 ],
                 'allow_add'    => true,
-                'allow_delete' => true
+                'allow_delete' => true,
+                'by_reference' => false,
+                
             ])
             ->add('image', FileType::class, [
                 'label'    => 'Ajouter une image (conseillé)',

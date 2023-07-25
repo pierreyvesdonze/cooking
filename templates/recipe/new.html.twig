@@ -9,23 +9,23 @@
     {{ form_row(form.title) }}
     {{ form_row(form.category) }}
 
-    {# STEPS #}
-    <ul class="steps" data-index="{{ form.recipeStep|length > 0 ? form.recipeStep|last.vars.name + 1 : 0 }}"
-        data-prototype="{{ form_widget(form.recipeStep.vars.prototype)|e('html_attr') }}">
-    </ul>
-
-    <button type="button" class="btn add-recipe-step" data-collection-holder-class="steps">Ajouter une étape</button>
-
-    {# INGREDIENTS #}
-    <ul class="ingredients" data-index="{{ form.recipeIngredient|length > 0 ? form.recipeIngredient|last.vars.name + 1 : 0 }}"
-        data-prototype="{{ form_widget(form.recipeIngredient.vars.prototype)|e('html_attr') }}">
+     {# INGREDIENTS #}
+     <ul class="ingredients" data-index="{{ form.recipeIngredients|length > 0 ? form.recipeIngredients|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(form.recipeIngredients.vars.prototype)|e('html_attr') }}">
     </ul>
 
     <button type="button" class="btn add-recipe-ingredient" data-collection-holder-class="ingredients">Ajouter un ingrédient</button>
 
-    <br>
-    {{ form_row(form.description) }}
+    {# STEPS #}
+    <ul class="steps" data-index="{{ form.recipeSteps|length > 0 ? form.recipeSteps|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(form.recipeSteps.vars.prototype)|e('html_attr') }}">
+    </ul>
 
+    <button type="button" class="btn add-recipe-step" data-collection-holder-class="steps">Ajouter une étape</button>
+
+    <br>
+    
+    {{ form_row(form.description) }}
     {{ form_end(form) }}
 
     <script src="{{ asset('assets/js/recipeStepManagement.js') }}"></script>

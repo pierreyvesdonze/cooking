@@ -11,7 +11,7 @@
 {# Recipies #}
 <div class="row">
     {% for recipe in recipies %}
-    <div class="card-container col s6 m3" data-category="{{ recipe.category.title }}" data-title="{{ recipe.title }}">
+    <div class="card-container col s6 m4" data-category="{{ recipe.category.title }}" data-title="{{ recipe.title }}">
         <a href="{{ path('app_recipe_show', {'id':recipe.id}) }}" class="card-link">
             <div class="card small">
                 <div class="card-image">

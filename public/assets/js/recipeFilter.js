@@ -7,7 +7,7 @@ const recipeFilter = {
     },
 
     searchBar: function () {
-        /* Disable activ tab-container item */
+        /* Disable active tab-container item */
         $('.tab-container').removeClass('tabActive');
 
         const input = this.value.toLowerCase();

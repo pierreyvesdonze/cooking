@@ -55,23 +55,6 @@ HOME
     width: 100%;
 }
 
-/* .home-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: center;  
-    flex-direction: column;
-
-    h1 {
-        text-align: center;
-    }
-
-    span {
-        user-select: none;
-    }
-} */
-
 /*
 *******************************
 RECIPE
@@ -244,4 +227,14 @@ RECIPE
 
 .recipe-steps-div {
     font-weight: 300;
+}
+
+/*
+*******************************
+SEARCH
+*******************************
+*/
+#search,
+#search-mobile {
+    padding-left: 50px;
 }

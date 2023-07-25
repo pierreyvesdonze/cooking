@@ -63,6 +63,7 @@ RECIPE
 /*TABS*/
 .categories-tabs {
     margin-bottom: 0 !important;
+    user-select: none;
     @include sm {
         display: none;
     }
@@ -72,6 +73,7 @@ RECIPE
 }
 
 .categories-tabs-mobile {
+    user-select: none;
     @include md {
         display: none;
     }

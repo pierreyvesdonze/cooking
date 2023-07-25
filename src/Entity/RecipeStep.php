@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RecipeStepRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass: RecipeStepRepository::class)]
 class RecipeStep
@@ -13,7 +14,7 @@ class RecipeStep
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'recipeSteps')]

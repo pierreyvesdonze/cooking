@@ -15,7 +15,8 @@ MEDIA QUERIES
 }
 
 body {
-  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
   background: var(--body-bg);
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
@@ -24,14 +25,22 @@ body {
 
 body,
 html {
-  overflow: hidden;
   margin: 0;
 }
 
 .main-container {
-  overflow-y: auto;
-  height: 85vh;
-  margin: 0 30px;
+  overflow-y: hidden;
+  margin: 0 320px;
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  .main-container {
+    margin: 0 30px;
+  }
+}
+@media (min-width: 300px) and (max-width: 576px) {
+  .main-container {
+    margin: 0 30px;
+  }
 }
 
 a {

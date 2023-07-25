@@ -10,7 +10,8 @@
 }
 
 body {
-  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
   background: var(--body-bg);
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
@@ -19,14 +20,18 @@ body {
 
 body,
 html {
-  overflow: hidden;
   margin: 0;
 }
 
 .main-container {
-  overflow-y: auto;
-  height: 85vh;
-  margin: 0 30px;
+  overflow-y: hidden;
+  margin: 0 320px;
+  @include sm {
+    margin: 0 30px;
+  }
+  @include xs {
+    margin: 0 30px;
+  }
 }
 
 a {

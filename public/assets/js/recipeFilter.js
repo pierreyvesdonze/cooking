@@ -6,7 +6,10 @@ const recipeFilter = {
         $('.close-filter-btn').on('click', recipeFilter.resetSearchInput);
     },
 
-    searchBar: function (e) {
+    searchBar: function () {
+        /* Disable activ tab-container item */
+        $('.tab-container').removeClass('tabActive');
+
         const input = this.value.toLowerCase();
         const items = document.querySelectorAll('.card-container');
 

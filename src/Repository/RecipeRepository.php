@@ -53,13 +53,11 @@ class RecipeRepository extends ServiceEntityRepository
        ;
    }
 
-//    public function findOneBySomeField($value): ?Recipe
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findAllDesc()
+    {
+        $queryBuilder = $this->createQueryBuilder('e');
+        $queryBuilder->orderBy('e.id', 'DESC');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

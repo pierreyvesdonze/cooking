@@ -29,7 +29,7 @@ class RecipeController extends AbstractController
         $categories = $recipeCategoryRepository->findAll();
 
         return $this->render('recipe/index.html.twig', [
-            'recipies' => $recipeRepository->findAll(),
+            'recipies' => $recipeRepository->findAllDesc(),
             'categories' => $categories
         ]);
     }

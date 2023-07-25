@@ -1,5 +1,12 @@
 const app = {
     init: function () {
+
+        /**
+         * STOP ANIMATION
+         */
+        //app.stopSpinnerAnim();
+
+
         /**
          * *****************************
          * Materialize components init
@@ -19,13 +26,15 @@ const app = {
          * LISTENERS
          * *****************************
          */
+        document.querySelector('.validate-btn').addEventListener('click', app.loadSpinnerAnim);
+
         const categoryTabs = document.querySelectorAll('.category-tab');
         categoryTabs.forEach(function (tab) {
             tab.addEventListener('click', app.recipeTabFilter);
         });
 
         document.querySelector('#search').addEventListener('keyup', app.searchBar);
-        document.querySelector('#search-mobile').addEventListener('keyup', app.searchBar);
+        document.querySelector('#search-mobile').addEventListener('keyup', app.searchBar);        
     },
 
     recipeTabFilter: function (e) {
@@ -79,7 +88,21 @@ const app = {
             const display = title.includes(input) ? 'block' : 'none';
             item.style.display = display;
         });
-    }
+    },
+
+    loadSpinnerAnim: function () {
+        const animationLoadingContainer = document.querySelector('.animation-loading-container');
+        animationLoadingContainer.style.display = 'block';
+        animationLoadingContainer.style.opacity = '1';
+    },
+
+    stopSpinnerAnim: function () {
+        const animationLoadingContainer = document.querySelector('.animation-loading-container');
+        animationLoadingContainer.style.opacity = '0';
+        setTimeout(() => {
+            animationLoadingContainer.style.display = 'none';
+        }, 2000);
+    },
 };
 
 document.addEventListener('DOMContentLoaded', app.init);

@@ -24,11 +24,16 @@
 </head>
 
 <body>
+
+    {# Loading animation #}
+    <div class="animation-loading-container">
+        <div class="lds-dual-ring"></div>
+    </div>
+
     {# NAV #}
     {% include("nav/nav.html.twig") %}
 
     <section class="main-container">
-
 
         {# Flash messages #}
         <div class="flash-container">

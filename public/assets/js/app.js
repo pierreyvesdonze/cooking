@@ -1,94 +1,60 @@
-const app = {
-    init: function () {
+$(document).ready(function() {
+    /**
+     * STOP ANIMATION
+     */
+    // app.stopSpinnerAnim();
 
-        /**
-         * STOP ANIMATION
-         */
-        //app.stopSpinnerAnim();
+    /**
+     * Materialize components init
+     */
+    $('.sidenav').sidenav();
+    $('.dropdown-trigger').dropdown();
+    $('.collapsible').collapsible();
 
+    /**
+     * LISTENERS
+     */
+    $('.validate-btn').on('click', app.loadSpinnerAnim);
 
-        /**
-         * *****************************
-         * Materialize components init
-         * *****************************
-         */
-        const sidenav = document.querySelectorAll('.sidenav');
-        M.Sidenav.init(sidenav);
+    $('.category-tab').on('click', app.recipeTabFilter);
+  });
 
-        const dropdownTrigger = document.querySelectorAll('.dropdown-trigger');
-        M.Dropdown.init(dropdownTrigger);
+  const app = {
+    recipeTabFilter: function(e) {
+      $('.tab-container').removeClass('tabActive');
+      $(e.currentTarget).parent().addClass('tabActive');
 
-        const collapsible = document.querySelectorAll('.collapsible');
-        M.Collapsible.init(collapsible);
+      const category = $(e.currentTarget).data('category');
+      $('.card-container').hide();
 
-        /**
-         * *****************************
-         * LISTENERS
-         * *****************************
-         */
-        document.querySelector('.validate-btn').addEventListener('click', app.loadSpinnerAnim);
+      const filteredCards = $('.card-container').filter(function() {
+        return $(this).data('category') === category;
+      });
 
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        categoryTabs.forEach(function (tab) {
-            tab.addEventListener('click', app.recipeTabFilter);
-        });
+      filteredCards.each(function(index) {
+        $(this).delay(80 * index).show(0);
+      });
+
+      app.renameTitleRecipeCategory(e);
     },
 
-    recipeTabFilter: function (e) {
-        /* for css only */
-        const tabContainers = document.querySelectorAll('.tab-container');
-        tabContainers.forEach(function (container) {
-            container.classList.remove('tabActive');
-        });
-        e.currentTarget.parentNode.classList.add('tabActive');
+    renameTitleRecipeCategory: function(e) {
+      const mainTitle = $('.recipe-category-title');
+      const target = $(e.currentTarget);
 
-        const category = e.currentTarget.dataset.category;
-        const cardContainers = document.querySelectorAll('.card-container');
-
-        cardContainers.forEach(function (container) {
-            container.style.display = 'none';
-        });
-
-        // Filtering cards by category
-        const filteredCards = Array.prototype.filter.call(cardContainers, function (container) {
-            return container.dataset.category === category;
-        });
-
-        // Little animation, cards are showing one by one
-        filteredCards.forEach(function (card, index) {
-            setTimeout(function () {
-                card.style.display = 'block';
-            }, 80 * index);
-        });
-
-        // Rename title of recipes index page depending on the category selected
-        app.renameTitleRecipeCategory(e);
+      if (target.parent().hasClass('tabActive')) {
+        mainTitle.text(target.data('category'));
+      } else {
+        mainTitle.text('Recettes');
+      }
     },
 
-    renameTitleRecipeCategory: function (e) {
-        const mainTitle = document.querySelector('.recipe-category-title');
-        const target = e.currentTarget;
-
-        if (target.parentNode.classList.contains('tabActive')) {
-            mainTitle.textContent = target.dataset.category;
-        } else {
-            mainTitle.textContent = 'Recettes';
-        }
+    loadSpinnerAnim: function() {
+      $('.animation-loading-container').fadeIn().css('display', 'block');
     },
 
-    loadSpinnerAnim: function () {
-        const animationLoadingContainer = document.querySelector('.animation-loading-container');
-        animationLoadingContainer.style.display = 'block';
-        animationLoadingContainer.style.opacity = '1';
+    stopSpinnerAnim: function() {
+      const animationLoadingContainer = $('.animation-loading-container');
+      animationLoadingContainer.fadeOut().css('display', 'none');
     },
-
-    stopSpinnerAnim: function () {
-        const animationLoadingContainer = document.querySelector('.animation-loading-container');
-        animationLoadingContainer.style.opacity = '0';
-        setTimeout(() => {
-            animationLoadingContainer.style.display = 'none';
-        }, 2000);
-    },
-};
-
-document.addEventListener('DOMContentLoaded', app.init);
+  };

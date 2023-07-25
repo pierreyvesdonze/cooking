@@ -1,8 +1,9 @@
 const recipeFilter = {
     init: function () {
 
-        document.querySelector('#search').addEventListener('keyup', recipeFilter.searchBar);
-        document.querySelector('#search-mobile').addEventListener('keyup', recipeFilter.searchBar);
+        $('#search').on('keyup', recipeFilter.searchBar);
+        $('#search-mobile').on('keyup', recipeFilter.searchBar);
+        $('.close-filter-btn').on('click', recipeFilter.resetSearchInput);
     },
 
     searchBar: function (e) {
@@ -15,6 +16,11 @@ const recipeFilter = {
             item.style.display = display;
         });
     },
+
+    resetSearchInput: function () {
+        $('#search').val('').trigger($.Event('keyup', { keyCode: 13 }));
+        $('#search-mobile').val('').trigger($.Event('keyup', { keyCode: 13 }));
+    }
 };
 
 document.addEventListener('DOMContentLoaded', recipeFilter.init);

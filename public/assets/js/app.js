@@ -32,9 +32,6 @@ const app = {
         categoryTabs.forEach(function (tab) {
             tab.addEventListener('click', app.recipeTabFilter);
         });
-
-        document.querySelector('#search').addEventListener('keyup', app.searchBar);
-        document.querySelector('#search-mobile').addEventListener('keyup', app.searchBar);        
     },
 
     recipeTabFilter: function (e) {
@@ -77,17 +74,6 @@ const app = {
         } else {
             mainTitle.textContent = 'Recettes';
         }
-    },
-
-    searchBar: function (e) {
-        const input = this.value.toLowerCase();
-        const items = document.querySelectorAll('.card-container');
-
-        items.forEach(item => {
-            const title = item.dataset.title.toLowerCase();
-            const display = title.includes(input) ? 'block' : 'none';
-            item.style.display = display;
-        });
     },
 
     loadSpinnerAnim: function () {

@@ -39,6 +39,15 @@ var app = {
             $(this).delay(80 * index).show(0);
         });
 
+        // Rename title of recipies index page depend of category selected
+        app.renameTitleRecipeCategory(e);
+    },
+
+    renameTitleRecipeCategory: (e) => {
+        const mainTitle = $('.recipe-category-title');
+        const target = $(e.currentTarget);
+  
+        target.parent().hasClass('tabActive') ? mainTitle.text(target.data('category')) : mainTitle.text('Recettes');
     }
 }
 

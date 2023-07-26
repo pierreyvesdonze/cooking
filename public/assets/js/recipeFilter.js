@@ -10,11 +10,13 @@ const recipeFilter = {
         /* Disable active tab-container item */
         $('.tab-container').removeClass('tabActive');
 
-        const input = this.value.toLowerCase();
+        /* Normalize, lowercase, remove accents */
+        const input = this.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const items = document.querySelectorAll('.card-container');
 
         items.forEach(item => {
-            const title = item.dataset.title.toLowerCase();
+            /* Normalize, lowercase, remove accents */
+            const title = item.dataset.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             const display = title.includes(input) ? 'block' : 'none';
             item.style.display = display;
         });

@@ -3,64 +3,64 @@
 {% block title %}Recipe{% endblock %}
 
 {% block body %}
-<h1>{{ recipe.title }}</h1>
-
-<div class="flex-left-right-recipe">
-    <div class="flex-left-recipe">
-        <img src="{{ asset(recipe.image) }}" alt="" class="show-recipe-img">
-    </div>
-
-    <div class="flex-right-recipe">
-        <p class="recipe-description">{{ recipe.description }}</p>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Portions</th>
-                    <td>{{ recipe.portions }}</td>
-                </tr>
-                <tr>
-                    <th>Temps de préparation</th>
-                    <td>{{ recipe.timePrepa }}</td>
-                </tr>
-                <tr>
-                    <th>Temps de cuisson</th>
-                    <td>{{ recipe.timeCooking }}</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Ingrédients</h3>
-
-        <div class="recipe-ingredients-div">
-            <ul>
-                {% for ingredient in recipe.recipeIngredients %}
-                <li>
-                    {{ ingredient.name }}
-                </li>
-                {% endfor %}
-            </ul>
+<section class="recipe-show-container">
+    <h1>{{ recipe.title }}</h1>
+    <div class="flex-left-right-recipe">
+        <div class="flex-left-recipe">
+            <img src="{{ asset(recipe.image) }}" alt="" class="show-recipe-img">
         </div>
 
-        <h3>Étapes</h3>
+        <div class="flex-right-recipe">
+            <p class="recipe-description">{{ recipe.description }}</p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Portions</th>
+                        <td>{{ recipe.portions }}</td>
+                    </tr>
+                    <tr>
+                        <th>Temps de préparation</th>
+                        <td>{{ recipe.timePrepa }}</td>
+                    </tr>
+                    <tr>
+                        <th>Temps de cuisson</th>
+                        <td>{{ recipe.timeCooking }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <div class="recipe-steps-div">
-            <ol>
-                {% for step in recipe.recipeSteps %}
-                <li>
-                   {{ step.name }}
-                </li>
-                {% endfor %}
-            </ol>
+            <h3>Ingrédients</h3>
+
+            <div class="recipe-ingredients-div">
+                <ul>
+                    {% for ingredient in recipe.recipeIngredients %}
+                    <li>
+                        {{ ingredient.name }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <h3>Étapes</h3>
+
+            <div class="recipe-steps-div">
+                <ol>
+                    {% for step in recipe.recipeSteps %}
+                    <li>
+                        {{ step.name }}
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
     </div>
-</div>
 
-{% if app.user and is_granted('ROLE_ADMIN') %}
-<div class="control-recipe">
-    <a href="{{ path('app_recipe_edit', {'id':recipe.id}) }}" class="btn">MODIFIER</a>
+    {% if app.user and is_granted('ROLE_ADMIN') %}
+    <div class="control-recipe">
+        <a href="{{ path('app_recipe_edit', {'id':recipe.id}) }}" class="btn">MODIFIER</a>
 
-    {{ include('recipe/_delete_form.html.twig') }}
-</div>
-{% endif %}
-
+        {{ include('recipe/_delete_form.html.twig') }}
+    </div>
+    {% endif %}
+</section>
 {% endblock %}

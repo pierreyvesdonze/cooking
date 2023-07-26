@@ -3,6 +3,7 @@
 {% block title %}Modifier la recette{% endblock %}
 
 {% block body %}
+<section class="main-container">
     <h1>Modifier la recette</h1>
 
     {{ form_start(form) }}
@@ -10,11 +11,13 @@
     {{ form_row(form.category) }}
 
     {# INGREDIENTS #}
-    <ul class="ingredients" data-index="{{ form.recipeIngredients|length > 0 ? form.recipeIngredients|last.vars.name + 1 : 0 }}"
+    <ul class="ingredients"
+        data-index="{{ form.recipeIngredients|length > 0 ? form.recipeIngredients|last.vars.name + 1 : 0 }}"
         data-prototype="{{ form_widget(form.recipeIngredients.vars.prototype)|e('html_attr') }}">
     </ul>
-    
-    <button type="button" class="btn add-recipe-ingredient" data-collection-holder-class="ingredients">Ajouter un ingrédient</button>
+
+    <button type="button" class="btn add-recipe-ingredient" data-collection-holder-class="ingredients">Ajouter un
+        ingrédient</button>
 
     {# STEPS #}
     <ul class="steps" data-index="{{ form.recipeSteps|length > 0 ? form.recipeSteps|last.vars.name + 1 : 0 }}"
@@ -27,8 +30,8 @@
 
     {{ form_row(form.description) }}
     {{ form_end(form) }}
-
-    <script src="{{ asset('assets/js/recipeStepManagement.js') }}"></script>
-    <script src="{{ asset('assets/js/recipeIngredientManagement.js') }}"></script>
+</section>
+<script src="{{ asset('assets/js/recipeStepManagement.js') }}"></script>
+<script src="{{ asset('assets/js/recipeIngredientManagement.js') }}"></script>
 
 {% endblock %}

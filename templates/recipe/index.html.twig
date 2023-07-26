@@ -3,6 +3,8 @@
 {% block title %}Recettes index{% endblock %}
 
 {% block body %}
+
+<section class="main-container">
 <h1 class="recipe-category-title">Recettes</h1>
 
 {# Categories #}
@@ -29,6 +31,6 @@
     </tr>
     {% endfor %}
 </div>
-
+</section>
 <script src="{{ asset('assets/js/recipeFilter.js') }}"></script>
 {% endblock %}

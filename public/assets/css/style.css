@@ -235,6 +235,10 @@ RECIPE
 *******************************
 */
 /*TABS*/
+.recipe-show-container {
+  margin: 0 80px;
+}
+
 .categories-tabs {
   margin-bottom: 0 !important;
   -webkit-user-select: none;

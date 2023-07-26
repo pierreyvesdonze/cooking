@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     /**
      * STOP ANIMATION
      */
@@ -15,46 +15,46 @@ $(document).ready(function() {
      * LISTENERS
      */
     $('.validate-btn').on('click', app.loadSpinnerAnim);
-
     $('.category-tab').on('click', app.recipeTabFilter);
-  });
+});
 
-  const app = {
-    recipeTabFilter: function(e) {
-      $('.tab-container').removeClass('tabActive');
-      $(e.currentTarget).parent().addClass('tabActive');
+const app = {
+    recipeTabFilter: function (e) {
+        $('.tab-container').removeClass('tabActive');
+        $(e.currentTarget).parent().addClass('tabActive');
 
-      const category = $(e.currentTarget).data('category');
-      $('.card-container').hide();
+        const category = $(e.currentTarget).data('category');
+        $('.card-container').hide();
 
-      const filteredCards = $('.card-container').filter(function() {
-        return $(this).data('category') === category;
-      });
+        const filteredCards = $('.card-container').filter(function () {
+            return $(this).data('category') === category;
+        });
 
-      filteredCards.each(function(index) {
-        $(this).delay(80 * index).show(0);
-      });
+        filteredCards.each(function (index) {
+            $(this).delay(80 * index).show(0);
+        });
 
-      app.renameTitleRecipeCategory(e);
+        app.renameTitleRecipeCategory(e);
     },
 
-    renameTitleRecipeCategory: function(e) {
-      const mainTitle = $('.recipe-category-title');
-      const target = $(e.currentTarget);
+    renameTitleRecipeCategory: function (e) {
+        const mainTitle = $('.recipe-category-title');
+        const target = $(e.currentTarget);
 
-      if (target.parent().hasClass('tabActive')) {
-        mainTitle.text(target.data('category'));
-      } else {
-        mainTitle.text('Recettes');
-      }
+        if (target.parent().hasClass('tabActive')) {
+            mainTitle.text(target.data('category'));
+        } else {
+            mainTitle.text('Recettes');
+        }
     },
 
-    loadSpinnerAnim: function() {
-      $('.animation-loading-container').fadeIn().css('display', 'block');
+    loadSpinnerAnim: function () {
+        console.log('anim')
+        $('.animation-loading-container').fadeIn().css('display', 'block');
     },
 
-    stopSpinnerAnim: function() {
-      const animationLoadingContainer = $('.animation-loading-container');
-      animationLoadingContainer.fadeOut().css('display', 'none');
+    stopSpinnerAnim: function () {
+        const animationLoadingContainer = $('.animation-loading-container');
+        animationLoadingContainer.fadeOut().css('display', 'none');
     },
-  };
+};

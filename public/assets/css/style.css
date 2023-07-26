@@ -31,6 +31,7 @@ html {
 .main-container {
   overflow-y: hidden;
   margin: 0 320px;
+  padding-top: 64px;
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .main-container {
@@ -147,6 +148,9 @@ SPINNER LOADING ANIMATION
   }
 }
 nav {
+  position: fixed !important;
+  top: 0;
+  z-index: 1000;
   background-color: var(--blue-color) !important;
   box-shadow: none;
 }
@@ -236,7 +240,18 @@ RECIPE
 */
 /*TABS*/
 .recipe-show-container {
+  padding-top: 64px;
   margin: 0 80px;
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  .recipe-show-container {
+    margin: 0 30px;
+  }
+}
+@media (min-width: 300px) and (max-width: 576px) {
+  .recipe-show-container {
+    margin: 0 30px;
+  }
 }
 
 .categories-tabs {

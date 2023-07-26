@@ -62,7 +62,14 @@ RECIPE
 */
 /*TABS*/
 .recipe-show-container {
+    padding-top: 64px;
     margin: 0 80px;
+    @include sm {
+        margin: 0 30px;
+    }
+    @include xs {
+        margin: 0 30px;
+    }
 }
 
 .categories-tabs {

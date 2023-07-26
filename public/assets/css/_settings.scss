@@ -26,6 +26,7 @@ html {
 .main-container {
   overflow-y: hidden;
   margin: 0 320px;
+  padding-top: 64px;
   @include sm {
     margin: 0 30px;
   }

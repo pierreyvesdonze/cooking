@@ -1,31 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+  <div class="home-container">
+    <div class="home-left">
+      <img src="{{ asset('assets/images/cooking-home-img.jpg') }}" alt="">
+    </div>
+    <div class="home-right">
+      <h1>Bienvenue sur COOKING</h1>
 
-<div class="home-container">
-  <div class="home-left">
-    <img src="{{ asset('assets/images/cooking-home-img.jpg') }}" alt="">
-  </div>
-  <div class="home-right">
-    <h1>Bienvenue sur COOKING</h1>
+      {% if app.user %}
+      <span>Vous êtes connecté en tant que {{ app.user.email }}</span>
+      <br>
+      {% endif %}
 
-    {% if app.user %}
-    <span>Vous êtes connecté en tant que {{ app.user.email }}</span>
-    <br>
-    {% endif %}
-    
-    <a href="{{ path('app_recipe_index') }}" class="btn">Voir les recettes</a>
+      <a href="{{ path('app_recipe_index') }}" class="btn">Voir les recettes</a>
+    </div>
   </div>
-</div>
 
-<div class="home-container">
-  <div class="home-left">
-    <h2 style="text-align:center">Épluchez des recettes savoureuses et authentiques</h2>
+  <div class="home-container">
+    <div class="home-left">
+      <h2 style="text-align:center">Épluchez des recettes savoureuses et authentiques</h2>
 
-    <a href="{{ path('app_recipe_index') }}" class="btn">Découvrir</a>
+      <a href="{{ path('app_recipe_index') }}" class="btn">Découvrir</a>
+    </div>
+    <div class="home-right">
+      <img src="{{ asset('assets/icons/red-chili-pepper.png') }}" alt="pepper" class="home-icon-pepper">
+    </div>
   </div>
-  <div class="home-right">
-    <img src="{{ asset('assets/icons/red-chili-pepper.png') }}" alt="pepper" class="home-icon-ingredients">
-  </div>
-</div>
 {% endblock %}

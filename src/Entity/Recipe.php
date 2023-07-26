@@ -31,10 +31,10 @@ class Recipe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $timeCooking = null;
 
-    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeIngredient::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeIngredient::class, orphanRemoval: true, fetch: "EAGER")]
     private Collection $recipeIngredients;
 
-    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeStep::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeStep::class, orphanRemoval: true, fetch: "EAGER")]
     private Collection $recipeSteps;
 
     #[ORM\ManyToOne(inversedBy: 'recipes')]

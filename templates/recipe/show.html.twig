@@ -4,7 +4,10 @@
 
 {% block body %}
 <section class="recipe-show-container">
-    <h1>{{ recipe.title }}</h1>
+    <div class="title-control-flex">
+        <h1>{{ recipe.title }}</h1>
+        <a href="{{ path('app_recipe_index') }}"><i class="material-icons medium">arrow_back</i></a>
+    </div>
     <div class="flex-left-right-recipe">
         <div class="flex-left-recipe">
             <img src="{{ asset(recipe.image) }}" alt="" class="show-recipe-img">

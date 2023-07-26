@@ -60,6 +60,14 @@ HOME
 RECIPE
 *******************************
 */
+.title-control-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    i {
+        color: var(--primary-color);
+    }
+}
 /*TABS*/
 .recipe-show-container {
     padding-top: 64px;

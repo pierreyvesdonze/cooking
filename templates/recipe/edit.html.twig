@@ -10,7 +10,7 @@
     {{ form_row(form.title) }}
     {{ form_row(form.category) }}
 
-    {# INGREDIENTS #}
+    {# INGREDIENTS #}    
     <ul class="ingredients"
         data-index="{{ form.recipeIngredients|length > 0 ? form.recipeIngredients|last.vars.name + 1 : 0 }}"
         data-prototype="{{ form_widget(form.recipeIngredients.vars.prototype)|e('html_attr') }}">

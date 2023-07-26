@@ -238,6 +238,15 @@ HOME
 RECIPE
 *******************************
 */
+.title-control-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title-control-flex i {
+  color: var(--primary-color);
+}
+
 /*TABS*/
 .recipe-show-container {
   padding-top: 64px;

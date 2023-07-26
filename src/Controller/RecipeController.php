@@ -7,6 +7,7 @@ use App\Form\RecipeType;
 use App\Repository\RecipeCategoryRepository;
 use App\Repository\RecipeRepository;
 use App\Service\ImageManager;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -91,7 +92,7 @@ class RecipeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/editer', name: 'app_recipe_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_recipe_edit', methods: ['GET', 'POST'])]
     public function edit(
         Request $request,
         Recipe $recipe,
@@ -136,8 +137,8 @@ class RecipeController extends AbstractController
         }
 
         return $this->render('recipe/edit.html.twig', [
-            'recipe' => $recipe,
-            'form' => $form->createView(),
+            'recipe'               => $recipe,
+            'form'                 => $form->createView(),
         ]);
     }
 

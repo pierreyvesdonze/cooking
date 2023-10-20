@@ -39,7 +39,7 @@ class RecipeController extends AbstractController
         RecipeCategoryRepository $recipeCategoryRepository,
         $user,
     ): Response {
-        $recipies = $recipeRepository->findAllByOwner($user);
+        $recipies = $recipeRepository->findAllByUser($user);
         $categories = $recipeCategoryRepository->findAll();
 
         return $this->render('recipe/index.html.twig', [

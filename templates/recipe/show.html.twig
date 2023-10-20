@@ -8,6 +8,7 @@
         <h1>{{ recipe.title }}</h1>
         <a href="{{ path('app_recipe_index') }}"><i class="material-icons medium">arrow_back</i></a>
     </div>
+    <span>Recette ajoutée par {{ recipe.user.pseudo }}</span>
     <div class="flex-left-right-recipe">
         <div class="flex-left-recipe">
             <img src="{{ asset(recipe.image) }}" alt="" class="show-recipe-img">

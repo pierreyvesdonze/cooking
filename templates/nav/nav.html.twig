@@ -1,6 +1,7 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
     {% if app.user %}
+    <li><a href="{{ path('user_recipe_index') }}">Voir mes recettes</a></li>
     <li><a href="{{ path('app_recipe_new') }}">Ajouter une recette</a></li>
     <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
 
@@ -30,7 +31,8 @@
 
 <ul class="sidenav" id="mobile-demo">
     <li><a href="{{ path('app_recipe_index') }}" class="recipe-navlink">Recettes</a></li>
-    {% if app.user and is_granted('ROLE_ADMIN') %}
+    {% if app.user %}
+    <li><a href="{{ path('user_recipe_index') }}">Voir mes recettes</a></li>
     <li><a href="{{ path('app_recipe_new') }}">Ajouter une recette</a></li>
     <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
     {% else %}

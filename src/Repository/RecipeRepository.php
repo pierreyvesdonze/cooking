@@ -39,21 +39,33 @@ class RecipeRepository extends ServiceEntityRepository
         }
     }
 
-   /**
-    * @return Recipe[] Returns an array of Recipe objects
-    */
-   public function findByCategory($category): array
-   {
-       return $this->createQueryBuilder('r')
-           ->andWhere('r.category = :val')
-           ->setParameter('val', $category)
-           ->orderBy('r.id', 'DESC')
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    /**
+     * @return Recipe[] Returns an array of Recipe objects
+     */
+    public function findByCategory($category): array
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.category = :val')
+            ->setParameter('val', $category)
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 
-   public function findAllDesc()
+    /**
+     * @return Recipe[] Returns an array of Recipe objects
+     */
+    public function findAllByUser($user): array
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.user = :val')
+            ->setParameter('val', $user)
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllDesc()
     {
         $queryBuilder = $this->createQueryBuilder('e');
         $queryBuilder->orderBy('e.id', 'DESC');

@@ -28,7 +28,36 @@ class RecipeController extends AbstractController
         $categories = $recipeCategoryRepository->findAll();
 
         return $this->render('recipe/index.html.twig', [
-            'recipies' => $recipeRepository->findAllDesc(),
+            'recipies'   => $recipeRepository->findAllDesc(),
+            'categories' => $categories
+        ]);
+    }
+
+    #[Route('s/utilisateur/{user}', name: 'owner_recipe_index', methods: ['GET'])]
+    public function indexOwner(
+        RecipeRepository $recipeRepository,
+        RecipeCategoryRepository $recipeCategoryRepository,
+        $user,
+    ): Response {
+        $recipies = $recipeRepository->findAllByOwner($user);
+        $categories = $recipeCategoryRepository->findAll();
+
+        return $this->render('recipe/index.html.twig', [
+            'recipies'   => $recipies,
+            'categories' => $categories
+        ]);
+    }
+
+    #[Route('s/perso', name: 'user_recipe_index', methods: ['GET'])]
+    public function indexUser(
+        RecipeRepository $recipeRepository,
+        RecipeCategoryRepository $recipeCategoryRepository
+    ): Response {
+        $recipies = $recipeRepository->findAllByUser($this->getUser());
+        $categories = $recipeCategoryRepository->findAll();
+
+        return $this->render('recipe/index.html.twig', [
+            'recipies'   => $recipies,
             'categories' => $categories
         ]);
     }

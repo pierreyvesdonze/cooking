@@ -176,6 +176,10 @@ RECIPE
     color: var(--primary-color);
 }
 
+.user-recipe-link {
+    padding-left: 2em;
+}
+
 .card-image img {
     height: 180px;
     object-fit: cover;

@@ -1,6 +1,7 @@
 @import "./responsive";
 @import "./settings";
 @import "./navbar";
+@import "./animation";
 
 /*
 *******************************
@@ -30,7 +31,7 @@ HOME
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    align-content: center;  
+    align-content: center;
     flex-direction: column;
 
     h1 {
@@ -40,6 +41,7 @@ HOME
     span {
         user-select: none;
     }
+
     @include sm {
         width: 100%;
     }
@@ -64,28 +66,34 @@ RECIPE
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     i {
         color: var(--primary-color);
     }
 }
-/*TABS*/
+
 .recipe-show-container {
     padding-top: 64px;
     margin: 0 80px;
+
     @include sm {
         margin: 0 30px;
     }
+
     @include xs {
         margin: 0 30px;
     }
 }
 
+/*TABS*/
 .categories-tabs {
     margin-bottom: 0 !important;
     user-select: none;
+
     @include sm {
         display: none;
     }
+
     @include xs {
         display: none;
     }
@@ -93,12 +101,15 @@ RECIPE
 
 .categories-tabs-mobile {
     user-select: none;
+
     @include md {
         display: none;
     }
+
     @include lg {
         display: none;
     }
+
     @include xl {
         display: none;
     }
@@ -115,7 +126,8 @@ RECIPE
         padding: 10px;
         font-weight: 300;
         font-size: 1.7em;
-        &:hover{
+
+        &:hover {
             background-color: var(--blue-color);
         }
     }

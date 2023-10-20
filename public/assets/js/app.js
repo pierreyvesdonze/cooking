@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    /**
-     * STOP ANIMATION
-     */
-    // app.stopSpinnerAnim();
 
     /**
      * Materialize components init

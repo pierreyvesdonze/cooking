@@ -104,9 +104,33 @@ textarea {
   margin-top: 20px;
 }
 
+nav {
+  position: fixed !important;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--blue-color) !important;
+  box-shadow: none;
+}
+nav a {
+  color: var(--primary-color) !important;
+}
+
+.nav-wrapper {
+  margin: 0 24px;
+}
+
+.brand-logo img {
+  vertical-align: middle;
+}
+
+#dropdown1 {
+  width: 144px !important;
+  left: 90% !important;
+}
+
 /*
  ***************************
-SPINNER LOADING ANIMATION
+SPINNER LOADING tab-containerTION
  ***************************
  */
 .animation-loading-container {
@@ -147,30 +171,11 @@ SPINNER LOADING ANIMATION
     transform: rotate(360deg);
   }
 }
-nav {
-  position: fixed !important;
-  top: 0;
-  z-index: 1000;
-  background-color: var(--blue-color) !important;
-  box-shadow: none;
-}
-nav a {
-  color: var(--primary-color) !important;
-}
-
-.nav-wrapper {
-  margin: 0 24px;
-}
-
-.brand-logo img {
-  vertical-align: middle;
-}
-
-#dropdown1 {
-  width: 144px !important;
-  left: 90% !important;
-}
-
+/*
+ ***************************
+REVEAL ON SCROLL
+ ***************************
+*/
 /*
 *******************************
 HOME
@@ -247,7 +252,6 @@ RECIPE
   color: var(--primary-color);
 }
 
-/*TABS*/
 .recipe-show-container {
   padding-top: 64px;
   margin: 0 80px;
@@ -263,6 +267,7 @@ RECIPE
   }
 }
 
+/*TABS*/
 .categories-tabs {
   margin-bottom: 0 !important;
   -webkit-user-select: none;

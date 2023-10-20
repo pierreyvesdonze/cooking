@@ -7,7 +7,6 @@ use App\Form\RecipeType;
 use App\Repository\RecipeCategoryRepository;
 use App\Repository\RecipeRepository;
 use App\Service\ImageManager;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -107,7 +106,7 @@ class RecipeController extends AbstractController
             RecipeType::class,
             $recipe
         );
-
+  
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -1,10 +1,13 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-    {% if app.user and is_granted('ROLE_ADMIN') %}
+    {% if app.user %}
     <li><a href="{{ path('app_recipe_new') }}">Ajouter une recette</a></li>
     <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+
     {% else %}
+        
     <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+    <li><a href="{{ path('register') }}">Créer un compte</a></li>
     {# <li><a href="{{ path('app_register') }}">Créer un compte</a></li> #}
     {% endif %}
 </ul>

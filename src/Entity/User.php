@@ -32,6 +32,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Recipe::class, orphanRemoval: true)]
     private Collection $recipes;
 
+    #[ORM\Column(length: 255)]
+    private ?string $pseudo = null;
+
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
@@ -133,6 +136,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $recipe->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

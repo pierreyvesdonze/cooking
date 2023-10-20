@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WeeklyMenu index{% endblock %}
+
+{% block body %}
+    <h1>WeeklyMenu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Breakfast</th>
+                <th>FirstSnack</th>
+                <th>Lunch</th>
+                <th>SecondSnack</th>
+                <th>Dinner</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for weekly_menu in weekly_menus %}
+            <tr>
+                <td>{{ weekly_menu.id }}</td>
+                <td>{{ weekly_menu.title }}</td>
+                <td>{{ weekly_menu.breakfast }}</td>
+                <td>{{ weekly_menu.firstSnack }}</td>
+                <td>{{ weekly_menu.lunch }}</td>
+                <td>{{ weekly_menu.secondSnack }}</td>
+                <td>{{ weekly_menu.dinner }}</td>
+                <td>
+                    <a href="{{ path('app_weekly_menu_show', {'id': weekly_menu.id}) }}">show</a>
+                    <a href="{{ path('app_weekly_menu_edit', {'id': weekly_menu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_weekly_menu_new') }}">Create new</a>
+{% endblock %}

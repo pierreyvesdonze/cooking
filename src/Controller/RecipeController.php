@@ -106,7 +106,7 @@ class RecipeController extends AbstractController
             RecipeType::class,
             $recipe
         );
-  
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

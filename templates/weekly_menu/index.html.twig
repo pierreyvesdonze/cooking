@@ -1,45 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}WeeklyMenu index{% endblock %}
+{% block title %}Menus{% endblock %}
 
 {% block body %}
-    <h1>WeeklyMenu index</h1>
+<section id="weekly-menu-index">
+
+    <h1>Menus à la semaine</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Breakfast</th>
-                <th>FirstSnack</th>
-                <th>Lunch</th>
-                <th>SecondSnack</th>
-                <th>Dinner</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for weekly_menu in weekly_menus %}
+            {% for weeklyMenu in weeklyMenus %}
             <tr>
-                <td>{{ weekly_menu.id }}</td>
-                <td>{{ weekly_menu.title }}</td>
-                <td>{{ weekly_menu.breakfast }}</td>
-                <td>{{ weekly_menu.firstSnack }}</td>
-                <td>{{ weekly_menu.lunch }}</td>
-                <td>{{ weekly_menu.secondSnack }}</td>
-                <td>{{ weekly_menu.dinner }}</td>
+                <td>{{ weeklyMenu.title }}</td>
                 <td>
-                    <a href="{{ path('app_weekly_menu_show', {'id': weekly_menu.id}) }}">show</a>
-                    <a href="{{ path('app_weekly_menu_edit', {'id': weekly_menu.id}) }}">edit</a>
+                    <div class="title-control-flex">
+                        <a href="{{ path('app_weekly_menu_show', {'id': weeklyMenu.id}) }}" class="btn">Voir</a>
+                        {% include "weekly_menu/_delete_form.html.twig" %}
+                    </div>
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="3">Aucun menu trouvé</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_weekly_menu_new') }}">Create new</a>
+    <br>
+
+    <a href="{{ path('app_weekly_menu_new') }}" class="btn">Créer un menu</a>
+</section>
 {% endblock %}

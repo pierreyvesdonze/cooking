@@ -12,6 +12,11 @@ $(document).ready(function () {
      */
     $('.validate-btn').on('click', app.loadSpinnerAnim);
     $('.category-tab').on('click', app.recipeTabFilter);
+
+    // Fade out flash messages
+    setTimeout(() => {
+        $('.alert').fadeOut('fast')
+    }, 3000);
 });
 
 const app = {

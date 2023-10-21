@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New WeeklyMenu{% endblock %}
+{% block title %}Créer un menu de la semaine{% endblock %}
 
 {% block body %}
-    <h1>Create new WeeklyMenu</h1>
-
+<section class="add-weekly-menu">
+    <h1>Créer un menu de la semaine</h1>
+    
     {{ include('weekly_menu/_form.html.twig') }}
 
-    <a href="{{ path('app_weekly_menu_index') }}">back to list</a>
+</section>
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/weeklyMenu.js') }}"></script>
+{% endblock %}
 {% endblock %}

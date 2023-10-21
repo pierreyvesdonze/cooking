@@ -45,6 +45,29 @@ SPINNER LOADING tab-containerTION
 
 /*
  ***************************
-REVEAL ON SCROLL
+ALERT / FLASH MESSAGE
  ***************************
-*/
+ */
+ .alert,
+ .alert-success {
+   background-color: var(--alert-bg);
+   color: rgb(48, 48, 48);
+   border: none;
+   position: absolute;
+   width: 100%;
+   text-align: center;
+   z-index: 1200;
+   font-size: 2.5em;
+ }
+ @media (min-width: 300px) and (max-width: 576px) {
+   .alert,
+   .alert-success {
+	 font-size: 1.8em;
+   }
+ }
+ @media (min-width: 576px) and (max-width: 768px) {
+   .alert,
+   .alert-success {
+	 font-size: 1.8em;
+   }
+ }

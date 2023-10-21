@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New WeeklyDay{% endblock %}
+
+{% block body %}
+    <h1>Create new WeeklyDay</h1>
+
+    {{ include('weekly_day/_form.html.twig') }}
+
+    <a href="{{ path('app_weekly_day_index') }}">back to list</a>
+{% endblock %}

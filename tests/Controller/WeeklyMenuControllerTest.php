@@ -45,11 +45,6 @@ class WeeklyMenuControllerTest extends WebTestCase
 
         $this->client->submitForm('Save', [
             'weekly_menu[title]' => 'Testing',
-            'weekly_menu[breakfast]' => 'Testing',
-            'weekly_menu[firstSnack]' => 'Testing',
-            'weekly_menu[lunch]' => 'Testing',
-            'weekly_menu[secondSnack]' => 'Testing',
-            'weekly_menu[dinner]' => 'Testing',
         ]);
 
         self::assertResponseRedirects('/weekly/menu/');
@@ -62,11 +57,6 @@ class WeeklyMenuControllerTest extends WebTestCase
         $this->markTestIncomplete();
         $fixture = new WeeklyMenu();
         $fixture->setTitle('My Title');
-        $fixture->setBreakfast('My Title');
-        $fixture->setFirstSnack('My Title');
-        $fixture->setLunch('My Title');
-        $fixture->setSecondSnack('My Title');
-        $fixture->setDinner('My Title');
 
         $this->repository->save($fixture, true);
 
@@ -83,11 +73,6 @@ class WeeklyMenuControllerTest extends WebTestCase
         $this->markTestIncomplete();
         $fixture = new WeeklyMenu();
         $fixture->setTitle('My Title');
-        $fixture->setBreakfast('My Title');
-        $fixture->setFirstSnack('My Title');
-        $fixture->setLunch('My Title');
-        $fixture->setSecondSnack('My Title');
-        $fixture->setDinner('My Title');
 
         $this->repository->save($fixture, true);
 
@@ -95,11 +80,6 @@ class WeeklyMenuControllerTest extends WebTestCase
 
         $this->client->submitForm('Update', [
             'weekly_menu[title]' => 'Something New',
-            'weekly_menu[breakfast]' => 'Something New',
-            'weekly_menu[firstSnack]' => 'Something New',
-            'weekly_menu[lunch]' => 'Something New',
-            'weekly_menu[secondSnack]' => 'Something New',
-            'weekly_menu[dinner]' => 'Something New',
         ]);
 
         self::assertResponseRedirects('/weekly/menu/');
@@ -107,11 +87,6 @@ class WeeklyMenuControllerTest extends WebTestCase
         $fixture = $this->repository->findAll();
 
         self::assertSame('Something New', $fixture[0]->getTitle());
-        self::assertSame('Something New', $fixture[0]->getBreakfast());
-        self::assertSame('Something New', $fixture[0]->getFirstSnack());
-        self::assertSame('Something New', $fixture[0]->getLunch());
-        self::assertSame('Something New', $fixture[0]->getSecondSnack());
-        self::assertSame('Something New', $fixture[0]->getDinner());
     }
 
     public function testRemove(): void
@@ -122,11 +97,6 @@ class WeeklyMenuControllerTest extends WebTestCase
 
         $fixture = new WeeklyMenu();
         $fixture->setTitle('My Title');
-        $fixture->setBreakfast('My Title');
-        $fixture->setFirstSnack('My Title');
-        $fixture->setLunch('My Title');
-        $fixture->setSecondSnack('My Title');
-        $fixture->setDinner('My Title');
 
         $this->repository->save($fixture, true);
 

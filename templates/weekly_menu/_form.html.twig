@@ -1,4 +1,6 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_row(form.title) }}
+<ul class="add-day" data-index="{{ form.weeklyDay|length > 0 ? form.weeklyDay|last.vars.name + 1 : 0 }}"
+    data-prototype="{{ form_widget(form.weeklyDay.vars.prototype)|e('html_attr') }}"></ul>
+{{ form_row(form.submit) }}
 {{ form_end(form) }}

@@ -12,6 +12,7 @@ MEDIA QUERIES
   --btn-color-hover: #6a8da0;
   --btn-danger-color: #e69797;
   --btn-danger-color-hover: #aa6c6c;
+  --alert-bg: rgba(0, 0, 0, 0.589);
 }
 
 body {
@@ -104,6 +105,10 @@ textarea {
   margin-top: 20px;
 }
 
+section {
+  padding: 4em;
+}
+
 nav {
   position: fixed !important;
   top: 0;
@@ -173,9 +178,33 @@ SPINNER LOADING tab-containerTION
 }
 /*
  ***************************
-REVEAL ON SCROLL
+ALERT / FLASH MESSAGE
  ***************************
-*/
+ */
+.alert,
+.alert-success {
+  background-color: var(--alert-bg);
+  color: rgb(48, 48, 48);
+  border: none;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 1200;
+  font-size: 2.5em;
+}
+
+@media (min-width: 300px) and (max-width: 576px) {
+  .alert,
+  .alert-success {
+    font-size: 1.8em;
+  }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  .alert,
+  .alert-success {
+    font-size: 1.8em;
+  }
+}
 /*
 *******************************
 REGISTER/LOGIN
@@ -466,6 +495,16 @@ RECIPE
 
 .recipe-steps-div {
   font-weight: 300;
+}
+
+/*
+*******************************
+MENU
+*******************************
+*/
+.add-weekly-menu,
+#weekly-menu-index {
+  padding: 4em;
 }
 
 /*

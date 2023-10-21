@@ -1,13 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit WeeklyMenu{% endblock %}
+{% block title %}Modifier le menu{% endblock %}
 
 {% block body %}
-    <h1>Edit WeeklyMenu</h1>
+<section class="add-weekly-menu">
+    <h1>Modifier ce menu de la semaine</h1>   
+    {# 
+    <div class="select-weekly-day" data-menu="{{ weeklyMenu.id }}">
+        <form method="post">
+            <select id="estimate-line-delete-form">
+                <option value="0">--Sélectionnez une journée</option>
+                {% for weeklyDay in weeklyMenu.weeklyDay %}
+                <option value="{{ weeklyDay.id }}" data-id="{{ weeklyDay.id }}">{{ weeklyDay.day }}
+                </option>
+                <a href="{{ path('app_weekly_day_delete', {id:weeklyDay.id}) }}">Supprimer ce jour</a>
+                {% endfor %}
+            </select>
+        </form>
+    </div> #}
+    {{ include('weekly_menu/_form.html.twig') }}
+    
+</section>
 
-    {{ include('weekly_menu/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_weekly_menu_index') }}">back to list</a>
-
-    {{ include('weekly_menu/_delete_form.html.twig') }}
+{% block javascripts %}
+<script src="{{ asset('assets/js/weeklyMenu.js') }}"></script>
+{% endblock %}
 {% endblock %}

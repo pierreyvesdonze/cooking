@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WeeklyDay index{% endblock %}
+
+{% block body %}
+    <h1>WeeklyDay index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Day</th>
+                <th>Breakfast</th>
+                <th>Lunch</th>
+                <th>Dinner</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for weekly_day in weekly_days %}
+            <tr>
+                <td>{{ weekly_day.id }}</td>
+                <td>{{ weekly_day.day }}</td>
+                <td>{{ weekly_day.breakfast }}</td>
+                <td>{{ weekly_day.lunch }}</td>
+                <td>{{ weekly_day.dinner }}</td>
+                <td>
+                    <a href="{{ path('app_weekly_day_show', {'id': weekly_day.id}) }}">show</a>
+                    <a href="{{ path('app_weekly_day_edit', {'id': weekly_day.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_weekly_day_new') }}">Create new</a>
+{% endblock %}

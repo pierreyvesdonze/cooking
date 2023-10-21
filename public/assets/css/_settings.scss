@@ -7,6 +7,7 @@
   --btn-color-hover: #6a8da0;
   --btn-danger-color: #e69797;
   --btn-danger-color-hover: #aa6c6c;
+  --alert-bg: rgba(0, 0, 0, 0.589);
 }
 
 body {
@@ -95,3 +96,6 @@ textarea {
   margin-top: 20px;
 }
 
+section {
+  padding: 4em;
+}

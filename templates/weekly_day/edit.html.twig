@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit WeeklyDay{% endblock %}
+
+{% block body %}
+    <h1>Edit WeeklyDay</h1>
+
+    {{ include('weekly_day/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_weekly_day_index') }}">back to list</a>
+
+    {{ include('weekly_day/_delete_form.html.twig') }}
+{% endblock %}

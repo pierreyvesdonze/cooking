@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\WeeklyMenuRepository;
+use App\Entity\WeeklyDay;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WeeklyMenuRepository::class)]
@@ -16,20 +19,14 @@ class WeeklyMenu
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $breakfast = null;
+    #[ORM\OneToMany(mappedBy: 'weeklyMenu', targetEntity: WeeklyDay::class, orphanRemoval: true, cascade:['persist'])]
+    private Collection $weeklyDay;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $firstSnack = null;
+    public function __construct()
+    {
+        $this->weeklyDay = new ArrayCollection();
+    }
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $lunch = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $secondSnack = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $dinner = null;
 
     public function getId(): ?int
     {
@@ -48,62 +45,32 @@ class WeeklyMenu
         return $this;
     }
 
-    public function getBreakfast(): ?string
+    /**
+     * @return Collection<int, WeeklyDay>
+     */
+    public function getWeeklyDay(): Collection
     {
-        return $this->breakfast;
+        return $this->weeklyDay;
     }
 
-    public function setBreakfast(?string $breakfast): self
+    public function addWeeklyDay(WeeklyDay $weeklyDay): self
     {
-        $this->breakfast = $breakfast;
+        if (!$this->weeklyDay->contains($weeklyDay)) {
+            $this->weeklyDay->add($weeklyDay);
+            $weeklyDay->setWeeklyMenu($this);
+        }
 
         return $this;
     }
 
-    public function getFirstSnack(): ?string
+    public function removeWeeklyDay(WeeklyDay $weeklyDay): self
     {
-        return $this->firstSnack;
-    }
-
-    public function setFirstSnack(?string $firstSnack): self
-    {
-        $this->firstSnack = $firstSnack;
-
-        return $this;
-    }
-
-    public function getLunch(): ?string
-    {
-        return $this->lunch;
-    }
-
-    public function setLunch(?string $lunch): self
-    {
-        $this->lunch = $lunch;
-
-        return $this;
-    }
-
-    public function getSecondSnack(): ?string
-    {
-        return $this->secondSnack;
-    }
-
-    public function setSecondSnack(?string $secondSnack): self
-    {
-        $this->secondSnack = $secondSnack;
-
-        return $this;
-    }
-
-    public function getDinner(): ?string
-    {
-        return $this->dinner;
-    }
-
-    public function setDinner(?string $dinner): self
-    {
-        $this->dinner = $dinner;
+        if ($this->weeklyDay->removeElement($weeklyDay)) {
+            // set the owning side to null (unless already changed)
+            if ($weeklyDay->getWeeklyMenu() === $this) {
+                $weeklyDay->setWeeklyMenu(null);
+            }
+        }
 
         return $this;
     }

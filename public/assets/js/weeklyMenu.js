@@ -30,7 +30,6 @@ const addFormToCollection = (e) => {
         );
 
     collectionHolder.appendChild(item);
-
     collectionHolder.dataset.index++;
 
     addWeeklyDeleteFormLink(item);
@@ -39,7 +38,7 @@ const addFormToCollection = (e) => {
 const addWeeklyDeleteFormLink = (item) => {
     const removeFormButton = document.createElement('button');
     removeFormButton.innerText = 'Supprimer ce jour';
-    removeFormButton.classList.add('btn');
+    removeFormButton.classList.add('btn btn-danger');
 
     item.append(removeFormButton);
 

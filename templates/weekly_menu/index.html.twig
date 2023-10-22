@@ -17,7 +17,7 @@
         <tbody>
             {% for weeklyMenu in weeklyMenus %}
             <tr>
-                <td>{{ weeklyMenu.title }}</td>
+                <td class="td-bold">{{ weeklyMenu.title }}</td>
                 <td>
                     <div class="title-control-flex">
                         <a href="{{ path('app_weekly_menu_show', {'id': weeklyMenu.id}) }}" class="btn">Voir</a>

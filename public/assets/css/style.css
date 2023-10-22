@@ -507,6 +507,10 @@ MENU
   padding: 4em;
 }
 
+table thead tr th {
+  font-weight: bold;
+}
+
 /*
 *******************************
 SEARCH
